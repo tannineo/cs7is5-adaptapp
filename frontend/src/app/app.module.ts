@@ -6,15 +6,22 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginpageComponent } from './loginpage/loginpage.component';
 
 const routes: Routes = [
-  { path: 'register', component: RegistrationComponent }
+  { path: 'register', 
+   component: RegistrationComponent },
+   {
+     path:'login',
+     component: LoginpageComponent
+   }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LoginpageComponent
   ],
   imports: [
     BrowserModule,
