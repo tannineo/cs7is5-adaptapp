@@ -10,7 +10,7 @@ Environment and dependencies managed using `pipenv`
 To install dependencies:
 
 ```bash
-pipenv install
+pipenv install flask-restplus
 ```
 
 To enter the environment:
@@ -24,6 +24,22 @@ To exit the environment:
 ```bash
 exit
 ```
+
+## Start the server
+
+```bash
+python app/app.py
+```
+
+## Editor, linting, formatting ... etc
+
+Using the basic configuration of:
+
+- linter: `flake8`
+- formatter: `yapf`
+- refactoring: `rope`
+
+Recommended environment: `vscode` with official python plugin.
 
 ## Architecture
 
