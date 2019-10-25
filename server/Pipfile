@@ -12,6 +12,8 @@ mongoengine = "*"
 pyjwt = "*"
 redis = "*"
 flask = "*"
+flask-mongoengine = "*"
+flask-swagger = "*"
 
 [requires]
 python_version = "3.7"
