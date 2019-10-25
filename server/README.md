@@ -31,6 +31,8 @@ exit
 python app/app.py
 ```
 
+You can access the Swagger API from `http://localhost:23333/doc/`
+
 ## Editor, linting, formatting ... etc
 
 Using the basic configuration of:
