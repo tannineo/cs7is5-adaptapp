@@ -48,8 +48,7 @@ Recommended environment: `vscode` with official python plugin.
 The code has layers from top to bottom:
 
 - `controller`: where to validate a request
-- `biz`: where biz logic lies
-- `service`: where there is some basic logic (depends)
+- `service`: where there is some logic
 - `datasources`:
   - `model`: mongodb connection
   - `cache`: redis connection
