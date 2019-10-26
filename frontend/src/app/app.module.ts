@@ -7,21 +7,28 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginpageComponent } from './loginpage/loginpage.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
   { path: 'register', 
-   component: RegistrationComponent },
+   component: RegistrationComponent
+   },
    {
-     path:'login',
+     path:'',
      component: LoginpageComponent
-   }
+   },
+   {
+    path:'home',
+    component: HomepageComponent
+  }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
-    LoginpageComponent
+    LoginpageComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
