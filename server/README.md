@@ -10,7 +10,7 @@ Environment and dependencies managed using `pipenv`
 To install dependencies:
 
 ```bash
-pipenv install
+pipenv install flask-restplus
 ```
 
 To enter the environment:
@@ -25,13 +25,30 @@ To exit the environment:
 exit
 ```
 
+## Start the server
+
+```bash
+python app/app.py
+```
+
+You can access the Swagger API from `http://localhost:23333/doc/`
+
+## Editor, linting, formatting ... etc
+
+Using the basic configuration of:
+
+- linter: `flake8`
+- formatter: `yapf`
+- refactoring: `rope`
+
+Recommended environment: `vscode` with official python plugin.
+
 ## Architecture
 
 The code has layers from top to bottom:
 
 - `controller`: where to validate a request
-- `biz`: where biz logic lies
-- `service`: where there is some basic logic (depends)
+- `service`: where there is somea logic
 - `datasources`:
   - `model`: mongodb connection
   - `cache`: redis connection
