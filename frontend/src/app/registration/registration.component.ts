@@ -13,4 +13,8 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
   }
 
+  func(){
+    alert("Success")
+  }
+
 }
