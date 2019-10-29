@@ -1,5 +1,10 @@
 <p>
 Welcome to Adapt
 </p>
+<div class="images" *ngFor="let image of imagesList" (deferLoad)="image.show = true">
+    <ng-container *ngIf="image.show">
+      <img src={{image.url}}>
+    </ng-container>
+</div>
 
   

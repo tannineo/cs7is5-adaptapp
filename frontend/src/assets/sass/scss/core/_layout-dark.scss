@@ -51,6 +51,7 @@ body {
 
     // Navbar
     .navbar {
+
       .navbar-nav .nav-item,
       .nav-link,
       i {
@@ -128,7 +129,7 @@ body {
       color: $dl-text-color !important;
     }
 
-    // Smart Table
+    // Smart Table 
 
     .ng2-smart-filter {
       .form-control {
@@ -162,7 +163,7 @@ body {
     }
 
     form {
-      &.form-bordered .form-group > div {
+      &.form-bordered .form-group>div {
         border-left-color: $dl-border-color;
       }
 
@@ -181,15 +182,15 @@ body {
 
       // Wizard
 
-      &.wizard > .steps > ul > .current > a {
+      &.wizard>.steps>ul>.current>a {
         color: $white !important;
       }
     }
 
+
     // Angular Wizard
     aw-wizard-navigation-bar.horizontal ul.steps-indicator li div a {
-      font-family: "Montserrat", "Segoe UI", Roboto, "Helvetica Neue", Arial,
-        sans-serif;
+      font-family: "Montserrat", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
     .form-control,
@@ -205,6 +206,8 @@ body {
       color: $dl-text-color !important;
       border-color: $dl-border-color !important;
     }
+
+
 
     // Buttons
 
@@ -226,8 +229,10 @@ body {
       outline: none !important;
     }
 
+
     // Email Application
     .email-application {
+
       .email-app-sidebar,
       .email-app-list-mails,
       .email-app-mail-content {
@@ -268,6 +273,7 @@ body {
 
     // Chat application
     .chat-application {
+
       .chat-app-window,
       .chat-sidebar,
       .chat-fixed-search {
@@ -297,7 +303,8 @@ body {
       }
     }
 
-    // List Group
+
+    // List Group 
     .list-group {
       .list-group-item {
         background-color: inherit;
@@ -308,7 +315,7 @@ body {
       }
     }
 
-    // Media
+    // Media 
 
     .media-list.media-bordered .media {
       border-top-color: $dl-border-color;
@@ -338,11 +345,12 @@ body {
 
     .dropdown-header {
       background-color: $bg-color-dark;
-      color: $dl-headings-color;
+      color: $dl-headings-color
     }
 
     // Modal
     .modal {
+
       .modal-header {
         background: $dl-bg-color;
         border-bottom: 1px solid $dl-border-color;
@@ -363,6 +371,7 @@ body {
       .modal-footer {
         background: $dl-bg-color;
         border-top: 1px solid $dl-border-color;
+
       }
     }
 
@@ -375,6 +384,7 @@ body {
         }
       }
     }
+
 
     // Nav Tabs
 
@@ -390,6 +400,7 @@ body {
     }
 
     .tab-content {
+
       .tabpane,
       .active {
         background: $dl-bg-color !important;
@@ -417,6 +428,7 @@ body {
 
     // Pagination
     .pagination {
+
       .page-item {
         &.active {
           .page-link {
@@ -523,6 +535,7 @@ body {
       .cal-today {
         background-color: $bg-color-dark;
       }
+
     }
 
     .cal-day-cell.cal-out-month .cal-day-number {
@@ -549,9 +562,7 @@ body {
         background-color: $bg-color-dark;
       }
 
-      .cal-time-events
-        .cal-day-columns:not(.cal-resize-active)
-        .cal-hour-segment:hover {
+      .cal-time-events .cal-day-columns:not(.cal-resize-active) .cal-hour-segment:hover {
         background-color: transparent !important;
       }
 
@@ -594,16 +605,16 @@ body {
         background-color: $bg-color-dark;
       }
 
-      .cal-time-events
-        .cal-day-columns:not(.cal-resize-active)
-        .cal-hour-segment:hover {
+      .cal-time-events .cal-day-columns:not(.cal-resize-active) .cal-hour-segment:hover {
         background-color: transparent !important;
       }
+
     }
 
     // Timeline
 
     .cd-horizontal-timeline {
+
       .events {
         a {
           color: $dl-text-color;
@@ -619,11 +630,12 @@ body {
       }
     }
 
-    // Taskboard
+    // Taskboard 
 
     .taskboard-app-form {
       background-color: transparent !important;
     }
+
 
     #coming-soon {
       .card-title.text-dark {
@@ -633,6 +645,7 @@ body {
       .card-body,
       #clockFlat,
       .cs-text-divider {
+
         span.text-dark,
         p.text-dark {
           color: $white !important;
@@ -665,34 +678,13 @@ body {
       }
     }
 
-    // Notification Dropdown
-    .notification-dropdown{
-      .noti-text{
-        color: #FFF;
-      }
-      .noti-container{
-        &:hover{
-          i{
-            color: #FFF !important;
-          }
-        }
-      }
-    }
-
-
     // Notification Sidebar
 
     .notification-sidebar {
       &.open {
-        background: $bg-color-dark !important;
-        box-shadow: 0px 0px 20px 3px #00000061 !important;
+        background: $dl-bg-color !important;
       }
 
-      .tab-content {
-        .active {
-          background: $bg-color-dark !important;
-        }
-      }
       .notification-sidebar-close {
         .ft-x {
           color: $white !important;
@@ -703,15 +695,11 @@ body {
         color: $component-active-bg !important;
       }
 
-      #activity {
-        #timeline.timeline-left .timeline-line {
-          background-color: #5e617d;
-        }
-      }
       .switch {
         border: none !important;
       }
     }
+
 
     // For Auth Pages in dark layout
 
@@ -721,7 +709,7 @@ body {
     #lock-screen,
     #coming-soon,
     #maintenance {
-      background-image: url("../../assets/img/gallery/dark-bg.jpg") !important;
+      background-image: url('../../assets/img/gallery/dark-bg.jpg') !important;
 
       .fg-image,
       .login-img,
