@@ -1,0 +1,38 @@
+/* 
+  .bodyBackground {
+    background-image: url('../../assets/Images/background.jpg');
+    background-position: 500px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #ffffff;
+    min-block-size: -webkit-fill-available;
+  } */
+  // For Registration page
+
+#regestration {
+  background-image: url("../../assets/img/gallery/dark-bg.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  .register-img {
+    background: #f0f0f0;
+    padding: 0;
+  }
+
+  .login-btn {
+    .btn.btn-outline-primary {
+      &:hover {
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .recover-pass {
+    button.btn.btn-primary {
+      color: #fff !important;
+    }
+  }
+}
