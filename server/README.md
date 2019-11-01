@@ -31,6 +31,7 @@ first you should install `mongodb` and `redis` on your machine.
 
 - `mongodb`: https://www.mongodb.com/download-center/community
 - `redis`: https://redis.io/download
+  - windows alternative: https://www.memurai.com/
 
 Once you started `mongodb` and `redis`. Filling the configurations in `config.ini`. Then run the server using following command:
 
