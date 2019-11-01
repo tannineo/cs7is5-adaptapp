@@ -7,16 +7,16 @@ The server code!
 Environment and dependencies managed using `pipenv`
 (considering dockerization)
 
-To install dependencies:
-
-```bash
-pipenv install flask-restplus
-```
-
 To enter the environment:
 
 ```bash
 pipenv shell
+```
+
+To install the whole dependencies:
+
+```bash
+pipenv install
 ```
 
 To exit the environment:
