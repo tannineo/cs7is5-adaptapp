@@ -1,6 +1,8 @@
 from flask import request
 from flask_restplus import Namespace, Resource, fields
 
+from app.service import user
+
 api = Namespace(
     'user',
     description='User Controller, register, login, logout & account settings')
@@ -19,9 +21,18 @@ class UserRegister(Resource):
     @api.doc('user_register', body=register_fields)
     def post(self):
         json = request.get_json()
-        print(json)
 
-        return {'msg': 'OK'}
+        try:
+            pass
+            # TODO
+            # validate the data
+            # register service
+        except RuntimeError as error:
+            pass
+        else:
+            pass
+
+        return {'msg': 'OK', 'result': '23333333'}
 
 
 login_fields = api.model(
