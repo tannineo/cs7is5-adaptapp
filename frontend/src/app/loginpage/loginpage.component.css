@@ -1,0 +1,11 @@
+
+.bodyBackground {
+  background-image: url('../../assets/Images/background.jpg');
+  background-position: 500px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #ffffff;
+  min-block-size: -webkit-fill-available;
+  margin-bottom: -15px;
+}
