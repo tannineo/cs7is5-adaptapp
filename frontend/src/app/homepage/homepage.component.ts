@@ -7,7 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  imagesList = [];
+  constructor() {
+    for (let i = 0; i < 50; i++) {
+      const url = 'https://loremflickr.com/1200/800?cats' + (i + 1);
+      this.imagesList[i] = {
+        url: url,
+        show: false
+      };
+    }
+  }
 
   ngOnInit() {
   }
