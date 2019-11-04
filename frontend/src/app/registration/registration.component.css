@@ -7,4 +7,5 @@
     background-size: cover;
     background-color: #ffffff;
     min-block-size: -webkit-fill-available;
+    margin-bottom: -15px;
   }

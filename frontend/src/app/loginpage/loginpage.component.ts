@@ -1,33 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-loginpage',
   templateUrl: './loginpage.component.html',
-  styleUrls: ['./loginpage.component.scss']
+  styleUrls: ['./loginpage.component.css']
 })
 export class LoginpageComponent implements OnInit {
-  name:string;
-  pass:string;
-  loginForm:NgForm;
+  name: string;
+  pass: string;
   constructor(private router: Router) {
-    
    }
 
   ngOnInit() {
   }
-  onSubmit() {
-
-
-}
- loginClick(event){
-  if(this.name=="a"&&this.pass=="a"){
-    alert("Login Success")
-    this.router.navigate(['/home']);
+ loginClick(event) {
+   if (this.name === 'a' && this.pass === 'a') {
+     alert('Login Success')
+     this.router.navigate(['/home']);
+   } else {
+     alert('Invalid Credentials')
    }
-   else{
-     alert("Invalid Credentials")
-   }
-   this.loginForm.reset();  
+
  }
 }

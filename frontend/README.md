@@ -1,8 +1,12 @@
 # Adaptive Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.2.
 
-## Running the application
+## Steps to set up and run the application
 
-Run `ng serve` or `ng serve -aot` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Navigate to /frontend folder and run `npm install`.
+
+Run `ng serve` for starting the application. 
+
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 

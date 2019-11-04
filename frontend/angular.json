@@ -3,34 +3,45 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "matngular": {
+    "adaptive": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
+            "outputPath": "dist/adaptive",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
-              "src/assets/css/demo.css",
-              "src/assets/sass/app.scss",
-              "src/styles.css"
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+           
+    "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              "src/assets/vendor/pace/pace.min.js"
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -39,51 +50,44 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ]
+              "buildOptimizer": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "matngular:build"
+            "browserTarget": "adaptive:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "matngular:build:production"
+              "browserTarget": "adaptive:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "matngular:build"
+            "browserTarget": "adaptive:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
-            "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [
-              "src/assets/vendor/pace/pace.min.js"
-            ],
+            "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/assets/css/demo.css",
-              "src/assets/sass/app.scss",
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
               "src/styles.css"
             ],
+            "scripts": [],
             "assets": [
-              "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/assets"
             ]
           }
         },
@@ -95,46 +99,39 @@
               "src/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**/*"
+              "**/node_modules/**"
             ]
           }
         }
       }
     },
-    "matngular-e2e": {
-      "root": "",
-      "sourceRoot": "e2e",
+    "adaptive-e2e": {
+      "root": "e2e/",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "matngular:serve"
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "adaptive:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "adaptive:serve:production"
+            }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
-            ],
+            "tsConfig": "e2e/tsconfig.e2e.json",
             "exclude": [
-              "**/node_modules/**/*"
+              "**/node_modules/**"
             ]
           }
         }
       }
     }
   },
-  "defaultProject": "matngular",
-  "schematics": {
-    "@schematics/angular:component": {
-      "prefix": "app",
-      "styleext": "scss"
-    },
-    "@schematics/angular:directive": {
-      "prefix": "app"
-    }
-  }
+  "defaultProject": "adaptive"
 }
