@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-homepage',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../../../node_modules/ng-masonry-grid/ng-masonry-grid.css']
 })
 export class HomepageComponent implements OnInit {
-
+  faCoffee = faHeart;
   imagesList = [{
     url: 'https://source.unsplash.com/user/erondu/1600x900'
   },

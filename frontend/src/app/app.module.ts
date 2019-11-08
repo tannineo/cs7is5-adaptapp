@@ -10,6 +10,7 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import {PreferencesComponent} from './preferences/preferences.component';
 import { NgMasonryGridModule } from 'ng-masonry-grid';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const routes: Routes = [
   { path: 'register',
@@ -43,7 +44,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     MatButtonModule,
-    NgMasonryGridModule
+    NgMasonryGridModule,
+    FontAwesomeModule
   ],
   exports: [RouterModule],
   providers: [],

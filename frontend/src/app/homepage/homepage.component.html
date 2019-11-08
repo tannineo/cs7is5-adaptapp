@@ -21,6 +21,8 @@
   <ng-masonry-grid-item id="{{'masonry-item-'+i}}" *ngFor="let image of imagesList; let i = index;" (click)="removeItem($event)">
     <!-- Grid Content  -->
     <img src={{image.url}} alt="No image" />
+    <fa-icon size=5 [icon]="faCoffee"></fa-icon>
   </ng-masonry-grid-item>
+
 </ng-masonry-grid>
 
