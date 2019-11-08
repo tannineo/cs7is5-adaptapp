@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import {PreferencesComponent} from './preferences/preferences.component';
+import { NgMasonryGridModule } from 'ng-masonry-grid';
 
 const routes: Routes = [
   { path: 'register',
@@ -41,7 +42,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    NgMasonryGridModule
   ],
   exports: [RouterModule],
   providers: [],
