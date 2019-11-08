@@ -1,0 +1,24 @@
+<div  style="overflow-x: hidden; overflow-y: hidden;">
+  <div class="row bodyBackground"></div>
+  <div class="col-md-4 col-xs-12" style="position: absolute; top: 20%;" >
+
+    <form style="padding: 30px 10px 30px 10px; margin: 20px; box-shadow: 2px 1px 1px #e9ecef; background: #F2F2F2;border-radius: 10px;">
+      <div style="text-align: center;">
+        <h2>Adapt App</h2>
+      </div>
+      <div>
+        Please select your preferences:
+      </div>
+       <div *ngFor="let preference of preferences" class="form-check" style="padding-top: 10px">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">{{preference}}</label>
+      </div>
+      <div style="padding-top: 10px">
+        <button type="submit" class="btn btn-primary" (click)="preferencesClicked()">Done</button>
+      </div>
+    </form>
+
+  </div>
+
+</div>
+
