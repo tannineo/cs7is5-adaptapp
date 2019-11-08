@@ -1,5 +1,5 @@
 from flask_mongoengine import MongoEngine
-from app.config import server_config
+from config import server_config
 
 db_name = server_config.get('mongo', 'db')
 db_host = server_config.get('mongo', 'host')

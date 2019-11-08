@@ -1,19 +1,26 @@
 from flask import Flask
 from flask_restplus import Resource, Api
 
-from controller.user import api as user_api
+from model import db
+from controller.user import user_api
 from config import server_config
 
 app = Flask(__name__)
-api = Api(app, version='1.0.0', title='adapt-app', doc='/doc/')
+# init db settings
+app.config['MONGODB_SETTINGS'] = {
+    'db': server_config.get('mongo', 'db'),
+    'host': server_config.get('mongo', 'host'),
+    'port': int(server_config.get('mongo', 'port'))
+}
+db.init_app(app)
 
-todos = {}
+server_api = Api(app, version='1.0.0', title='adapt-app', doc='/doc/')
 
 # add namespaces (controllers) here
-api.add_namespace(user_api)
+server_api.add_namespace(user_api)
 
 
-@api.route('/hello')
+@server_api.route('/hello')
 class HelloSimple(Resource):
     def get(self):
         return {'hello': 'world'}
