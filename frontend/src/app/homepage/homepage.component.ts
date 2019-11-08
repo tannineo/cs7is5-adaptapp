@@ -3,22 +3,31 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls: ['../../../node_modules/ng-masonry-grid/ng-masonry-grid.css']
 })
 export class HomepageComponent implements OnInit {
 
-  imagesList = [];
+  imagesList = [{
+    url: 'https://source.unsplash.com/user/erondu/1600x900'
+  },
+    {
+      url: 'https://source.unsplash.com/user/erondu/1600x900'
+    },
+    {
+      url: 'https://source.unsplash.com/user/erondu/600x900'
+    },
+    {
+      url: 'https://source.unsplash.com/user/erondu/600x900'
+    },
+    {
+      url: 'https://source.unsplash.com/user/erondu/600x900'
+    }];
   constructor() {
-    for (let i = 0; i < 50; i++) {
-      const url = 'https://loremflickr.com/1200/800?cats' + (i + 1);
-      this.imagesList[i] = {
-        url: url,
-        show: false
-      };
-    }
   }
 
   ngOnInit() {
   }
 
+  removeItem(e) {
+  }
 }

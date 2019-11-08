@@ -9,9 +9,18 @@
   </div>
 </form>
 </div>
-<div class="images" *ngFor="let image of imagesList" (deferLoad)="image.show = true">
-    <ng-container *ngIf="image.show">
-      <img src={{image.url}}>
-    </ng-container>
-</div>
+
+<!-- You can now use ng-masonry-grid component in app.component.html -->
+<!-- Masonry grid Container -->
+<ng-masonry-grid
+  [masonryOptions]="{ transitionDuration: '0.2s', gutter: 5 }"
+  [useAnimation]="true"
+  [useImagesLoaded]="true"
+  [scrollAnimationOptions]="{ animationEffect: 'effect-1', minDuration : 0.2, maxDuration : 0.3 }">
+  <!-- Masonry Grid Item -->
+  <ng-masonry-grid-item id="{{'masonry-item-'+i}}" *ngFor="let image of imagesList; let i = index;" (click)="removeItem($event)">
+    <!-- Grid Content  -->
+    <img src={{image.url}} alt="No image" />
+  </ng-masonry-grid-item>
+</ng-masonry-grid>
 
