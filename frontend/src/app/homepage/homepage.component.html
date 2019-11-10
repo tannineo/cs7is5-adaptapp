@@ -1,26 +1,25 @@
-<div>
-    <!-- <form class="navbar-form navbar-right mt-1" role="search"> -->
-<form class="navbar" role="search">
-  <div class="position-relative has-icon-right">
-      <input type="text" class="form-control round" placeholder="Search">
-      <div class="form-control-position">
+<div style="padding:20px">
+  <div>
+    <form class="navbar" role="search">
+      <div class="position-relative has-icon-right">
+        <input type="text" class="form-control round" placeholder="Search">
+        <div class="form-control-position">
           <i class="ft-search"></i>
+        </div>
       </div>
+    </form>
   </div>
-</form>
+
+
+  <ng-masonry-grid
+    [masonryOptions]="{ transitionDuration: '0.2s', gutter: 5 }"
+    [useAnimation]="true"
+    [useImagesLoaded]="true"
+    [scrollAnimationOptions]="{ animationEffect: 'effect-1', minDuration : 0.2, maxDuration : 0.3 }">
+    <ng-masonry-grid-item id="{{'masonry-item-'+i}}" *ngFor="let image of imagesList; let i = index;" (click)="removeItem($event)">
+      <img src={{image.url}} alt="No image" />
+      <div style="padding: 2px" (click)="heartClicked($event,image,i)"><fa-icon size=5 [icon]="faHeart"></fa-icon></div>
+    </ng-masonry-grid-item>
+  </ng-masonry-grid>
+
 </div>
-
-<!-- You can now use ng-masonry-grid component in app.component.html -->
-<!-- Masonry grid Container -->
-<ng-masonry-grid
-  [masonryOptions]="{ transitionDuration: '0.2s', gutter: 5 }"
-  [useAnimation]="true"
-  [useImagesLoaded]="true"
-  [scrollAnimationOptions]="{ animationEffect: 'effect-1', minDuration : 0.2, maxDuration : 0.3 }">
-  <!-- Masonry Grid Item -->
-  <ng-masonry-grid-item id="{{'masonry-item-'+i}}" *ngFor="let image of imagesList; let i = index;" (click)="removeItem($event)">
-    <!-- Grid Content  -->
-    <img src={{image.url}} alt="No image" />
-  </ng-masonry-grid-item>
-</ng-masonry-grid>
-
