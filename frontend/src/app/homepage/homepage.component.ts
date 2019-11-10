@@ -7,7 +7,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['../../../node_modules/ng-masonry-grid/ng-masonry-grid.css']
 })
 export class HomepageComponent implements OnInit {
-  faCoffee = faHeart;
+  faHeart = faHeart;
   imagesList = [{
     url: 'https://source.unsplash.com/user/erondu/1600x900'
   },
@@ -30,5 +30,10 @@ export class HomepageComponent implements OnInit {
   }
 
   removeItem(e) {
+  }
+
+  heartClicked(e, img, i) {
+    console.log(img)
+    console.log(i);
   }
 }
