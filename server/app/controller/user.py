@@ -2,7 +2,7 @@ from flask import request
 from flask_restplus import Namespace, Resource, fields
 from mongoengine.errors import ValidationError
 
-from service.user import create_user
+from service.user import create_user, change_preferences
 
 user_api = Namespace(
     'user',
@@ -75,3 +75,34 @@ class UserLogout(Resource):
     @user_api.doc('user_logout')
     def get():
         return {'msg': 'OK'}
+
+@user_api.route('/pref')
+class UserLogout(Resource):
+    @user_api.doc('user_preferences')
+    def post(self):
+        json = request.get_json()
+        try:
+            """validate req data"""
+            error = None
+
+            if not json['username']:
+                error = 'Username is required.'
+            if not json['interest']:
+                error = 'Interest field is required.'
+
+            if error is None:
+                """service logic"""
+                user = change_preferences(username=json['username'],
+                                interest=json['interest'])
+            else:
+                return {'msg': error}, 400
+
+        except AssertionError as error:
+            # special error management on errors from mongoengine
+            return {'msg': error}, 500  # specify the error code
+        except RuntimeError as error:
+            return {'msg': error}, 500
+        else:
+            pass
+
+        return {'msg': 'OK', 'result': user['interest']}

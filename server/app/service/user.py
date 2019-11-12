@@ -26,3 +26,10 @@ def create_user(username, password, email):
     user.save()
 
     return None
+
+def change_preferences(username, interest):
+    user = User.objects(username=username).first()
+    user.interest = interest
+    user.save()
+
+    return user
