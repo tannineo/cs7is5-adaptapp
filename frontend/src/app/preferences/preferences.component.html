@@ -10,11 +10,11 @@
         Please select your preferences:
       </div>
        <div *ngFor="let preference of preferences" class="form-check" style="padding-top: 10px">
-        <input type="checkbox" class="form-check-input" id="check-{{preference}}" (change)="onCheckboxChange(preference,$event)">
+        <input style="color: #37393c;" type="checkbox" class="form-check-input" id="check-{{preference}}" (change)="onCheckboxChange(preference,$event)">
         <label class="form-check-label" for=check-{{preference}}>{{preference}}</label>
       </div>
-      <div style="padding-top: 10px">
-        <button type="submit" class="btn btn-primary" (click)="preferencesClicked()">Done</button>
+      <div style="padding-top: 10px;">
+        <button style="color: #fff;background-color: #37393c;border-color: #37393c;" type="submit" class="btn btn-primary" (click)="preferencesClicked()">Done</button>
       </div>
     </form>
 

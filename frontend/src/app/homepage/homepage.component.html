@@ -1,25 +1,38 @@
 <div style="padding:20px">
-  <div>
-    <form class="navbar" role="search">
-      <div class="position-relative has-icon-right">
-        <input type="text" class="form-control round" placeholder="Search">
-        <div class="form-control-position">
-          <i class="ft-search"></i>
+    <div>
+      <form class="navbar" style="padding:0" role="search">
+        <div class="position-relative has-icon-right" style="display: flex">
+          <div style="padding: 2px"><input type="text" class="form-control round" placeholder="Search"></div>
+          <div style="padding: 10px;cursor: pointer;" (click)="searchClicked($event)"><fa-icon size=5 [icon]="faSearch"></fa-icon></div>
         </div>
-      </div>
-    </form>
-  </div>
+        <div style="float: right; display: flex">
+          UserName
+          <div style="padding-left: 5px;cursor: pointer;" (click)="logOutClicked($event)">
+            <fa-icon size=5 [icon]="faLogOut"></fa-icon>
+          </div>
+        </div>
+      </form>
+    </div>
 
 
-  <ng-masonry-grid
-    [masonryOptions]="{ transitionDuration: '0.2s', gutter: 5 }"
-    [useAnimation]="true"
-    [useImagesLoaded]="true"
-    [scrollAnimationOptions]="{ animationEffect: 'effect-1', minDuration : 0.2, maxDuration : 0.3 }">
-    <ng-masonry-grid-item id="{{'masonry-item-'+i}}" *ngFor="let image of imagesList; let i = index;" (click)="removeItem($event)">
-      <img src={{image.url}} alt="No image" />
-      <div style="padding: 2px" (click)="heartClicked($event,image,i)"><fa-icon size=5 [icon]="faHeart"></fa-icon></div>
-    </ng-masonry-grid-item>
-  </ng-masonry-grid>
+    <ng-masonry-grid
+      [masonryOptions]="{ transitionDuration: '0.1s', gutter: 5 }"
+      [useAnimation]="true"
+      [useImagesLoaded]="true"
+      [scrollAnimationOptions]="{ animationEffect: 'effect-1', minDuration : 0.2, maxDuration : 0.3 }">
+          <ng-masonry-grid-item style="margin-right: 5px;" id="{{'masonry-item-'+i}}" *ngFor="let image of imagesList; let i = index;" (click)="removeItem($event)">
+            <img src={{image.url}} alt="No image" />
+            <div style="padding: 2px;cursor: pointer;" (click)="heartClicked($event,image,i)"><fa-icon size=5 [icon]="faHeart"></fa-icon></div>
+          </ng-masonry-grid-item>
+          <ng-masonry-grid-item style="margin-right: 5px;" id="{{'masonry-rec-item-'+j}}" *ngFor="let recimage of recommendedList; let j = index;" (click)="removeItem($event)">
+            <img src={{recimage.url}} alt="No image" />
+            <div style="display: flex">
+              <div style="padding: 2px;cursor: pointer;" (click)="heartClicked($event,recimage,j)">
+                <fa-icon size=5 [icon]="faHeart"></fa-icon>
+              </div>
+              <div style="padding: 2px">Recommended for you</div>
+            </div>
+          </ng-masonry-grid-item>
+    </ng-masonry-grid>
 
 </div>
