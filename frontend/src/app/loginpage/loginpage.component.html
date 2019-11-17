@@ -8,10 +8,10 @@
         <h2>Adapt App</h2>
       </div>
       <div class="form-group">
-        <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+        <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username" [(ngModel)]="details.username" [ngModelOptions]="{standalone: true}">
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" [(ngModel)]="pass" [ngModelOptions]="{standalone: true}">
+        <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" [(ngModel)]="details.password_not_hashed" [ngModelOptions]="{standalone: true}">
       </div>
       <div>
         <button style="color: #fff;background-color: #37393c;border-color: #37393c;" type="submit" class="btn btn-primary" (click)="loginClick($event)">Login</button>

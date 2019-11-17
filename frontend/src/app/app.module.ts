@@ -11,6 +11,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import {PreferencesComponent} from './preferences/preferences.component';
 import { NgMasonryGridModule } from 'ng-masonry-grid';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
+import {UserService}  from './shared/user.service'
 
 const routes: Routes = [
   { path: 'register',
@@ -45,10 +47,11 @@ const routes: Routes = [
     FormsModule,
     MatButtonModule,
     NgMasonryGridModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
