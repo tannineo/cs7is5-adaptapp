@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import {UserService} from '../shared/user.service';
-import {Router} from '@angular/router';
-
+import { UserService } from '../shared/user.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-homepage',
@@ -12,6 +13,9 @@ import {Router} from '@angular/router';
   styleUrls: ['../../../node_modules/ng-masonry-grid/ng-masonry-grid.css']
 })
 export class HomepageComponent implements OnInit {
+  @Input() details = {
+    searchValue: '',
+  };
   faHeart = faHeart;
   faSearch = faSearch;
   faLogOut = faSignOutAlt;
@@ -20,35 +24,33 @@ export class HomepageComponent implements OnInit {
     'force_pic_config': '',
     'network_status': ''
   };
-  imagesList = [{
-    url: 'https://source.unsplash.com/user/erondu/1600x900'
-  },
-    {
-      url: 'https://source.unsplash.com/user/erondu/1600x900'
-    },
-    {
-      url: 'https://source.unsplash.com/user/erondu/600x900'
-    },
-    {
-      url: 'https://source.unsplash.com/user/erondu/600x900'
-    },
-    {
-      url: 'https://source.unsplash.com/user/erondu/600x900'
-    }];
-  recommendedList = [{
-    url: 'https://source.unsplash.com/user/erondu/1000x700'
-  },
-    {
-      url: 'https://source.unsplash.com/user/erondu/1000x700'
-    }];
-  constructor(private router: Router, private userService: UserService) {
+  networkInfo = '';
+  imageSize = 600;
+  imagesList = [];
+  recommendedList = [];
+  NetworkMsg = '';
+  isHighRes = false;
+  constructor(private router: Router, private userService: UserService, private http: HttpClient) {
   }
   ngOnInit() {
     this.logNetworkInfo();
     this.userName = localStorage.getItem('userName');
+    this.onHomePageLoad();
   }
   logNetworkInfo() {
-    return navigator['connection'].effectiveType;
+    this.networkInfo = navigator['connection'].effectiveType;
+    this.setNetworkMsg(this.networkInfo);
+  }
+  setNetworkMsg(network) {
+    if (network === '4g' || this.config.force_pic_config) {
+      this.NetworkMsg = 'Loading High Resolution Content';
+      this.isHighRes = true;
+      this.imageSize = 600;
+    } else {
+      this.NetworkMsg = 'Loading Low Resolution Content';
+      this.isHighRes = false;
+      this.imageSize = 100;
+    }
   }
   removeItem(e) {
   }
@@ -56,7 +58,61 @@ export class HomepageComponent implements OnInit {
     console.log(img);
     console.log(i);
   }
+  onHomePageLoad() {
+    this.userService.getSearchedImages()
+      .subscribe((data: any) => {
+        if (data.msg === 'OK') {
+          let i = 0;
+          while (i < data.result.pictures.length) {
+            this.imagesList.push({});
+            this.imagesList[i]['url'] = data.result.prefix + this.imageSize + data.result.pictures[i].url;
+            i++;
+          }
+        } else {
+          console.log('Search not successful');
+        }
+      });
+  }
+  loadRecommendedImages() {
+    this.userService.getRecommendedImages()
+      .subscribe((data: any) => {
+        if (data.msg === 'OK') {
+          const images = [];
+          let i = 0;
+          if (this.recommendedList.length === 0) {
+            while (i < data.result.pictures.length) {
+              this.recommendedList.push({});
+              i++;
+            }
+          }
+          let j = 0;
+          while (j < data.result.pictures.length) {
+            this.recommendedList[j]['url'] = data.result.prefix + this.imageSize + data.result.pictures[j].url;
+            j++;
+          }
+        } else {
+          console.log('Recommendation not successful');
+        }
+      });
+  }
   searchClicked(e) {
+    if (this.details.searchValue !== '') {
+      this.userService.getSearchedImages(this.details.searchValue)
+        .subscribe((data: any) => {
+          if (data.msg === 'OK') {
+            let i = 0;
+            while (i < data.result.pictures.length) {
+              this.imagesList[i]['url'] = data.result.prefix + this.imageSize + data.result.pictures[i].url;
+              i++;
+            }
+          } else {
+            console.log('Search not successful');
+          }
+        });
+      this.loadRecommendedImages();
+    } else {
+      console.log('Enter search value');
+    }
   }
   logOutClicked(e) {
     this.userService.logoutUser()
@@ -71,8 +127,9 @@ export class HomepageComponent implements OnInit {
   }
   onResolutionCheckChange(e) {
     if (event.target['checked']) {
+      this.imageSize = 600;
       this.config.force_pic_config = 'true';
-      this.config.network_status = this.logNetworkInfo();
+      this.config.network_status = this.networkInfo;
       this.userService.updateConfig(this.config)
         .subscribe((data: any) => {
           if (data.msg === 'OK') {

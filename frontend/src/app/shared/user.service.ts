@@ -68,5 +68,23 @@ export class UserService {
       });
       return this.http.post(this.apiURL + 'user/config', body, this.httpOptions);
     }
+    getRecommendedImages() {
+      this.httpOptions.headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('currentUser')
+      });
+      return this.http.get(this.apiURL + 'picture/recommend', this.httpOptions);
+    }
+    getSearchedImages(searchString?) {
+      this.httpOptions.headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('currentUser')
+      });
+      if (searchString) {
+        return this.http.get(this.apiURL + 'picture/search?search=' + searchString, this.httpOptions);
+      } else {
+        return this.http.get(this.apiURL + 'picture/search', this.httpOptions);
+      }
+    }
 
 }
