@@ -26,6 +26,7 @@
     "imagesloaded": "^4.1.4",
     "jquery": "^3.4.1",
     "masonry-layout": "^4.2.2",
+    "ng-connection-service": "^1.0.4",
     "ngx-bootstrap": "^5.2.0",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"

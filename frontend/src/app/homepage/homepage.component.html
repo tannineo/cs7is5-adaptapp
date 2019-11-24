@@ -6,7 +6,11 @@
           <div style="padding: 10px;cursor: pointer;" (click)="searchClicked($event)"><fa-icon size=5 [icon]="faSearch"></fa-icon></div>
         </div>
         <div style="float: right; display: flex">
-          UserName
+          <div style="padding-left: 5px;margin-right: 130px">
+            Show high resolution content:
+            <input style="color: #37393c; padding-right: 5px;margin-left: 5px" type="checkbox" class="form-check-input" id="high-res-check" (change)="onResolutionCheckChange($event)">
+          </div>
+          <p>{{userName}}</p>
           <div style="padding-left: 5px;cursor: pointer;" (click)="logOutClicked($event)">
             <fa-icon size=5 [icon]="faLogOut"></fa-icon>
           </div>
