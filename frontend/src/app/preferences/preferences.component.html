@@ -7,14 +7,18 @@
         <h2>Adapt App</h2>
       </div>
       <div>
-        Please select your preferences:
+        Which categories of images do you like?:
       </div>
-       <div *ngFor="let preference of preferences" class="form-check" style="padding-top: 10px">
-        <input style="color: #37393c;" type="checkbox" class="form-check-input" id="check-{{preference}}" (change)="onCheckboxChange(preference,$event)">
-        <label class="form-check-label" for=check-{{preference}}>{{preference}}</label>
-      </div>
+       <div class="col-md-12">
+         <div *ngFor="let preference of preferences;" class="form-check" style="padding-top: 2px">
+           <div class="col-md-6">
+             <input style="color: #37393c;" type="checkbox" class="form-check-input" id="check-{{preference}}" (change)="onCheckboxChange(preference,$event)">
+             <label class="form-check-label" for=check-{{preference}}>{{preference}}</label>
+           </div>
+         </div>
+       </div>
       <div style="padding-top: 10px;">
-        <button style="color: #fff;background-color: #37393c;border-color: #37393c;" type="submit" class="btn btn-primary" (click)="preferencesClicked()">Done</button>
+        <button style="color: #fff;background-color: #37393c;border-color: #37393c;" type="submit" class="btn btn-primary" (click)="preferencesClicked()">Save</button>
       </div>
     </form>
 

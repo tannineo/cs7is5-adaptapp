@@ -11,12 +11,12 @@ import {UserService}  from '../shared/user.service'
 export class RegistrationComponent implements OnInit {
 
   //register:Registration;
-  @Input() details ={
+  @Input() details = {
     username: '',
     password_not_hashed: '',
     email: ''
-  }
- 
+  };
+
   constructor(private router: Router, private registerservice: UserService) {
   }
 
@@ -27,17 +27,14 @@ export class RegistrationComponent implements OnInit {
     // this.register.username=this.username;
     // this.register.password_not_hashed=this.password_not_hashed;
     // this.register.email=this.email;
-    
     this.registerservice.registerUser(this.details)
-    .subscribe((data:any)=>{
-      if(data.msg=="OK"){
-        alert('Registration Success')
-      this.router.navigate(['/preferences']); }
-      else
-      {
-        alert('Registration Failed')
+    .subscribe((data: any) => {
+      if (data.msg === 'OK') {
+        alert('Registration Success');
+      this.router.navigate(['/']);
+      } else {
+        alert('Registration Failed');
       }
-    })
-    
+    });
    }
 }

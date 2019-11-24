@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {UserService} from '../shared/user.service';
 
 @Component({
   selector: 'app-preferences',
@@ -7,14 +8,21 @@ import {Router} from '@angular/router';
   styleUrls: ['./preferences.component.scss']
 })
 export class PreferencesComponent implements OnInit {
-  preferences = ['Cat', 'Dog', 'Rabbit'];
+  preferences = ['butterfly', 'dog', 'ox', 'squirrel', 'cat', 'elephant', 'sheep', 'chicken', 'horse', 'spider'];
   checkedList = [];
-  constructor(private router: Router) { }
+  constructor(private router: Router, private preferenceService: UserService) { }
 
   ngOnInit() {
   }
   preferencesClicked() {
-    this.router.navigate(['/home']);
+    this.preferenceService.setPreferencesOfUser({tags: this.checkedList})
+      .subscribe((data: any) => {
+        if (data.msg === 'OK') {
+          this.router.navigate(['/home']);
+        } else {
+          console.log('Preferences not set');
+        }
+    });
   }
   onCheckboxChange(option, event) {
     if (event.target.checked) {
