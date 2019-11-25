@@ -57,6 +57,14 @@ export class HomepageComponent implements OnInit {
   heartClicked(e, img, i) {
     console.log(img);
     console.log(i);
+    this.userService.likeImages(img.id)
+      .subscribe((data: any) => {
+        if (data.msg === 'OK') {
+          console.log("liked");
+        } else {
+          console.log('Search not successful');
+        }
+      });
   }
   onHomePageLoad() {
     this.userService.getSearchedImages()
@@ -65,7 +73,9 @@ export class HomepageComponent implements OnInit {
           let i = 0;
           while (i < data.result.pictures.length) {
             this.imagesList.push({});
+            this.imagesList[i]['id'] = data.result.pictures[i].id;
             this.imagesList[i]['url'] = data.result.prefix + this.imageSize + data.result.pictures[i].url;
+            this.imagesList[i]['likes'] = data.result.pictures[i].likes;
             i++;
           }
         } else {
