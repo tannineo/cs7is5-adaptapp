@@ -16,27 +16,34 @@
       </div>
     </form>
     <div style="padding-left: 5px;margin-right: 130px">
-      Network type : {{networkInfo}} ({{NetworkMsg}})
+      Your Network type : {{networkInfo}}
     </div>
-    <div *ngIf="isHighRes == false" style="padding-left: 5px;margin-right: 130px">
-      Show high resolution content:
-      <input style="color: #37393c; padding-right: 5px;margin-left: 5px" type="checkbox" class="form-check-input"
-             id="high-res-check" (change)="onResolutionCheckChange($event)">
+    <div style="min-height: 60px">
+      <div style="padding-left: 5px;cursor: pointer;" (click)="settingsIconClicked($event)">
+        <fa-icon size=5 [icon]="faUserCog"></fa-icon>
+      </div>
+      <div *ngIf="settingsClicked" style="padding-left: 5px;">
+        Always show high resolution content:
+        <input style="color: #37393c; padding-right: 5px;margin-left: 5px" type="checkbox" class="form-check-input" [checked]="forceConfig"
+               id="high-res-check" (change)="onResolutionCheckChange($event)">
+      </div>
+    </div>
+    <div style="margin-left: 5px;background-color: #d8d3d3;text-align: center;">
+      {{NetworkMsg}}
     </div>
   </div>
-
 
   <ng-masonry-grid [masonryOptions]="{ transitionDuration: '0.0s', gutter: 5 }" [useAnimation]="true"
     [useImagesLoaded]="true"
     [scrollAnimationOptions]="{ animationEffect: 'effect', minDuration : 0.2, maxDuration : 0.3 }">
-    <ng-masonry-grid-item style="margin-right: 5px;" id="{{'masonry-item-'+i}}"
+    <ng-masonry-grid-item style="margin-right: 5px;" [style.width.px]="imageSize"  id="{{'masonry-item-'+i}}"
       *ngFor="let image of imagesList; let i = index;" (click)="removeItem($event)">
       <img src={{image.url}} alt="No image" />
       <div style="padding: 2px;cursor: pointer;" (click)="heartClicked($event,image,i)">
         <fa-icon size=5 [icon]="faHeart"></fa-icon>
       </div>
     </ng-masonry-grid-item>
-    <ng-masonry-grid-item style="margin-right: 5px;" id="{{'masonry-rec-item-'+j}}"
+    <ng-masonry-grid-item style="margin-right: 5px;" [style.width.px]="imageSize" id="{{'masonry-rec-item-'+j}}"
       *ngFor="let recimage of recommendedList; let j = index;" (click)="removeItem($event)">
       <img src={{recimage.url}} alt="No image" />
       <div style="display: flex">

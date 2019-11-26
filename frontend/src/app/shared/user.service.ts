@@ -86,5 +86,12 @@ export class UserService {
         return this.http.get(this.apiURL + 'picture/search', this.httpOptions);
       }
     }
+    getConfig() {
+      this.httpOptions.headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('currentUser')
+      });
+        return this.http.get(this.apiURL + 'user/config', this.httpOptions);
+    }
 
 }
