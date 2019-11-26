@@ -75,6 +75,13 @@ export class UserService {
       });
       return this.http.get(this.apiURL + 'picture/recommend', this.httpOptions);
     }
+    likeImages(pic_id:string) {
+      this.httpOptions.headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('currentUser')
+      });
+      return this.http.post(this.apiURL + 'picture/like', {pic_id},this.httpOptions);
+    }
     getSearchedImages(searchString?) {
       this.httpOptions.headers = new HttpHeaders({
         'Content-Type': 'application/json',
@@ -85,6 +92,13 @@ export class UserService {
       } else {
         return this.http.get(this.apiURL + 'picture/search', this.httpOptions);
       }
+    }
+    getConfig() {
+      this.httpOptions.headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('currentUser')
+      });
+        return this.http.get(this.apiURL + 'user/config', this.httpOptions);
     }
 
 }

@@ -24,7 +24,8 @@ const routes: Routes = [
    },
    {
     path: 'home',
-    component: HomepageComponent
+    component: HomepageComponent,
+     runGuardsAndResolvers: 'always'
   },
   {
     path: 'preferences',
@@ -42,7 +43,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'}),
     BrowserAnimationsModule,
     FormsModule,
     MatButtonModule,
