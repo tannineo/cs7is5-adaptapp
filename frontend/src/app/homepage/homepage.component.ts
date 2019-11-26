@@ -86,7 +86,7 @@ export class HomepageComponent implements OnInit {
     this.userService.likeImages(img.id)
       .subscribe((data: any) => {
         if (data.msg === 'OK') {
-          img.likes=img.likes+1;
+          img.likes = img.likes + 1;
           console.log('liked');
         } else {
           console.log('Search not successful');
