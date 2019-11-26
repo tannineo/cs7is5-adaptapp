@@ -41,6 +41,7 @@
       <img src={{image.url}} alt="No image" />
       <div style="padding: 2px;cursor: pointer;" (click)="heartClicked($event,image,i)">
         <fa-icon size=5 [icon]="faHeart"></fa-icon>
+        {{image.likes}}
       </div>
     </ng-masonry-grid-item>
     <ng-masonry-grid-item style="margin-right: 5px;" [style.width.px]="imageSize" id="{{'masonry-rec-item-'+j}}"
@@ -49,8 +50,9 @@
       <div style="display: flex">
         <div style="padding: 2px;cursor: pointer;" (click)="heartClicked($event,recimage,j)">
           <fa-icon size=5 [icon]="faHeart"></fa-icon>
+          {{recimage.likes}}
         </div>
-        <div style="padding: 2px">Recommended for you</div>
+        <div style="padding: 2px;font-size:12px">Recommended</div>
       </div>
     </ng-masonry-grid-item>
   </ng-masonry-grid>
