@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <ng-masonry-grid [masonryOptions]="{ transitionDuration: '0.0s', gutter: 5 }" [useAnimation]="true"
+  <ng-masonry-grid #images [masonryOptions]="{ transitionDuration: '0.0s', gutter: 5 }" [useAnimation]="true"
     [useImagesLoaded]="true"
     [scrollAnimationOptions]="{ animationEffect: 'effect', minDuration : 0.2, maxDuration : 0.3 }">
     <ng-masonry-grid-item style="margin-right: 5px;" [style.width.px]="imageSize"  id="{{'masonry-item-'+i}}"

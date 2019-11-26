@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ViewChild, ViewChildren} from '@angular/core';
+import {Component, OnInit, Input, ViewChild, ViewChildren, QueryList} from '@angular/core';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +7,7 @@ import { UserService } from '../shared/user.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import {NgMasonryGridComponent} from 'ng-masonry-grid';
 
 @Component({
   selector: 'app-homepage',
@@ -27,14 +28,14 @@ export class HomepageComponent implements OnInit {
     'network_status': ''
   };
   networkInfo = '';
-  imageSize = 600;
+  imageSize = 200;
   imagesList = [];
   recommendedList = [];
   NetworkMsg = '';
   isHighRes = false;
   forceConfig = false;
-  settingsClicked = false
-  @ViewChildren('images') imagesElement;
+  settingsClicked = false;
+  @ViewChild('images') imagesElement: NgMasonryGridComponent;
   constructor(private router: Router, private userService: UserService, private http: HttpClient) {
   }
   ngOnInit() {
@@ -135,6 +136,7 @@ export class HomepageComponent implements OnInit {
             this.recommendedList[j]['likes'] = data.result.pictures[j].likes;
             j++;
           }
+          this.imagesElement.initializeMasonry();
         } else {
           console.log('Recommendation not successful');
         }
@@ -146,15 +148,17 @@ export class HomepageComponent implements OnInit {
         .subscribe((data: any) => {
           if (data.msg === 'OK') {
             let i = 0;
+            this.imagesList = [];
             while (i < data.result.pictures.length) {
+              this.imagesList.push({});
               this.imagesList[i]['url'] = data.result.prefix + this.imageSize + data.result.pictures[i].url;
               i++;
             }
+            this.loadRecommendedImages();
           } else {
             console.log('Search not successful');
           }
         });
-      this.loadRecommendedImages();
     } else {
       console.log('Enter search value');
     }
