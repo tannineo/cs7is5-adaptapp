@@ -152,7 +152,9 @@ export class HomepageComponent implements OnInit {
             this.imagesList = [];
             while (i < data.result.pictures.length) {
               this.imagesList.push({});
+              this.imagesList[i]['id'] = data.result.pictures[i].id;
               this.imagesList[i]['url'] = data.result.prefix + this.imageSize + data.result.pictures[i].url;
+              this.imagesList[i]['likes'] = data.result.pictures[i].likes;
               i++;
             }
             this.loadRecommendedImages();
